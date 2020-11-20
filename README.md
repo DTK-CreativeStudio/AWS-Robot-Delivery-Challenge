@@ -39,7 +39,7 @@
 上記のセットアップが終わると、以下のような画面が出てくると思います。  
 
 <div align="center">
-<img width="270" height="206" src="https://github.com/DTK-CreativeStudio/AWS-Robot-Delivery-Challenge/blob/master/Images/image1.png" alt="image" title="image">  <br>
+<img width="458" height="250" src="https://github.com/DTK-CreativeStudio/AWS-Robot-Delivery-Challenge/blob/master/Images/image1.png" alt="image" title="image">  <br>
 </div>  
 
 私の操作したファイルは`/delivery-challenge-sample/robot_ws/src/turtlebot3/turtlebot3_navigation/param`配下の  
@@ -60,7 +60,7 @@
 このロボットはROSというオペレーティング システム上で動いており、iPhoneやiPadに搭載されている**LiDARセンサ**等により、位置情報を把握します。  
 このアプリケーションでは、LiDARセンサから取得するデータの範囲の調整、及びナビゲーションの設定等でいろいろ変わってきます。   
 
-パラメータの調整次第では滑らかに壁にぶつかる事なく動いてくれますが、このパラメータ調整が難しく、大会中現在ではインターネット上の文献も少なくコツコツとパラメータ作成及び、マップ加工を行い、滑らかに動くようになりました。  
+パラメータの調整次第では滑らかに壁にぶつかる事なく動いてくれますが、このパラメータ調整が難しく、大会中現在ではインターネット上の文献も少なく、コツコツとパラメータ作成及び、マップ加工を行い、滑らかに動くようにしました。  
 私が調整したパラメータと、その内容は以下のようになっています。  
 
 1. `costmap_common_params_burger.yaml`  
@@ -69,7 +69,7 @@
 inflation_radius: 0.12 #1.0
 cost_scaling_factor: 15 #3.0
 ```  
-これらの数値は、そのロボットが自分を中心にどれくらいの範囲のものを検知し、障害物と見なすのかを表しています。これらの数値をデフォルトより低く設定しているのは、狭い道でも通り抜けれるようにするためです。  
+これらの数値は、そのロボットが自分を中心にどれくらいの範囲のものを検知し、障害物と見なすのかを表しています。これらの数値をデフォルトより低く設定しているのは、狭い道でも通り抜けれるようにするためです。これらの数値が大きいと確実に狭い道は通り抜けることができません。  
 
 2. `dwa_local_planner_params_burger.yaml`  
 このファイルではロボットのスピードと、ナビゲーションの各パラメータの重みを定義します。  
@@ -96,7 +96,7 @@ max値は本戦で使用した*turtlebot 3*の最高速度を設定していま�
 ```
 これらはナビゲーションを決定するためのパラメータを定義しています。  
 `path_distance_bias`の数値をデフォルトから下げたのは、ナビゲーションの経路に忠実に従って、動くと障害物に接触する可能性があるためです。そのため、そのパラメータの数値を下げることで、ナビゲーション経路から道が少しそれても許容できるようにし、障害物に接触する確率を減らしました。
-ただし、下げすぎると、ナビゲーション経路から外れすぎて、ナビゲーションの再設定、走行速度の低下を招く可能性があります。  
+ただし、下げすぎると、ナビゲーション経路から外れすぎて、的外れなナビゲーションの再設定、走行速度の低下を招く可能性があります。  
 
 3. `local_costmap_params.yaml`  
 ここでは、LiDARセンサによる情報の取得方法について定義しています。(たぶん)  
@@ -116,22 +116,22 @@ resolution: 0.02 #0.05
 
 AWSマネジメントコンソールにてS3を開きます。  
 <div align="center">
-<img width="200" height="152" src="https://github.com/DTK-CreativeStudio/AWS-Robot-Delivery-Challenge/blob/master/Images/image2.png" alt="image" title="image">  <br>
+<img width=width="458" height="250" src="https://github.com/DTK-CreativeStudio/AWS-Robot-Delivery-Challenge/blob/master/Images/image2.png" alt="image" title="image">  <br>
 </div>  
 
 `cf~`ではなく`deliverychallenge~`の直近のディレクトリを選択してください。(一番下が最新版です)    
 <div align="center">
-<img width="200" height="152" src="https://github.com/DTK-CreativeStudio/AWS-Robot-Delivery-Challenge/blob/master/Images/image3.png" alt="image" title="image">  <br>
+<img width="458" height="250" src="https://github.com/DTK-CreativeStudio/AWS-Robot-Delivery-Challenge/blob/master/Images/image3.png" alt="image" title="image">  <br>
 </div>  
 
 `map_store`を開いてください。  
 <div align="center">
-<img width="200" height="152" src="https://github.com/DTK-CreativeStudio/AWS-Robot-Delivery-Challenge/blob/master/Images/image4.png" alt="image" title="image">  <br>
+<img width="458" height="250" src="https://github.com/DTK-CreativeStudio/AWS-Robot-Delivery-Challenge/blob/master/Images/image4.png" alt="image" title="image">  <br>
 </div>  
 
 この`map.pgm`がロボットが作ったマップファイルなので、それを適宜加工します。  
 <div align="center">
-<img width="200" height="152" src="https://github.com/DTK-CreativeStudio/AWS-Robot-Delivery-Challenge/blob/master/Images/image5.png" alt="image" title="image">  <br>
+<img width="458" height="250" src="https://github.com/DTK-CreativeStudio/AWS-Robot-Delivery-Challenge/blob/master/Images/image5.png" alt="image" title="image">  <br>
 </div>  
 
 以上のようなパラメータ変更や、マップの加工をするとうまくいけば、ロボットが壁にぶつかったり、狭い道を通れなかったりすることはなくなるので、是非やってみてください。
