@@ -32,7 +32,7 @@
 
 それらの導入の方法などは以下の資料をご覧ください。  
 [ AWS Robot Delivery Workshop
-ロボコンのサンプルアプリケーションで自律走行を試す](https://pages.awscloud.com/rs/112-TZM-766/images/RDC-01_AWS_Summit_Online_2020.pdf)  
+ロボコンのサンプルアプリケーションで自律走行を試す](https://pages.awscloud.com/rs/112-TZM-766/images/RDC-01_AWS_Summit_Online_2020.pdf)  
 [aws-robomaker-sample-application-delivery-challenge](https://github.com/aws-samples/aws-robomaker-sample-application-delivery-challenge)  
 [AWS Educate 登録ページ](https://www.awseducate.com/registration#APP_TYPE)  
 
@@ -155,4 +155,4 @@ https://sy-base.com/myrobotics/ros/ros-move_base/
 http://wiki.ros.org/base_local_planner  
 
 
-編集 by [Yusuke](https://github.com/yusuke-1105)
+編集 by [yusuke-1105](https://github.com/yusuke-1105)
